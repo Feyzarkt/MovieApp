@@ -19,4 +19,19 @@
         android:name="com.feyzaurkut.movieapp.ui.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.feyzaurkut.movieapp.ui.search.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.feyzaurkut.movieapp.ui.favorites.FavoritesFragment"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" />
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.feyzaurkut.movieapp.ui.categories.CategoriesFragment"
+        android:label="fragment_categories"
+        tools:layout="@layout/fragment_categories" />
 </navigation>
