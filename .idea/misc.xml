@@ -6,7 +6,7 @@
         <entry key="..\:/Users/cartec/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/simple_list_item_1.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/cartec/Documents/MovieApp/app/src/main/res/drawable/bg_grey_border.xml" value="0.1015" />
         <entry key="..\:/Users/cartec/Documents/MovieApp/app/src/main/res/layout-v26/fragment_splash.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/cartec/Documents/MovieApp/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/cartec/Documents/MovieApp/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/cartec/Documents/MovieApp/app/src/main/res/layout/custom_list_item.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/cartec/Documents/MovieApp/app/src/main/res/layout/fragment_categories.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/cartec/Documents/MovieApp/app/src/main/res/layout/fragment_favorites.xml" value="0.20416666666666666" />
@@ -14,6 +14,7 @@
         <entry key="..\:/Users/cartec/Documents/MovieApp/app/src/main/res/layout/fragment_search.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/cartec/Documents/MovieApp/app/src/main/res/layout/fragment_splash.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/cartec/Documents/MovieApp/app/src/main/res/layout/item_home.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/cartec/Documents/MovieApp/app/src/main/res/layout/item_movie.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/cartec/Documents/MovieApp/app/src/main/res/menu/bottom_nav.xml" value="0.1" />
         <entry key="..\:/Users/cartec/Documents/MovieApp/app/src/main/res/menu/menu.xml" value="0.20416666666666666" />
       </map>
