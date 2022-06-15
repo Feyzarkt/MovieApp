@@ -21,10 +21,11 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField "String", "BASE_URL", "\"https://api.sampleapis.com/movies/\""
+            buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/3/\""
         }
         release {
-            buildConfigField "String", "BASE_URL", "\"https://api.sampleapis.com/movies/\""
+            //3c7ab02722ce1ddde20129d8d03a8320
+            buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/3\""
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -80,4 +81,7 @@ dependencies {
 
     //AdMob
     //implementation 'com.google.android.gms:play-services-ads:21.0.0'
+
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }
