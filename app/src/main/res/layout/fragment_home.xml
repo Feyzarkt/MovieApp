@@ -10,7 +10,6 @@
         android:id="@+id/rvMovies"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"
         tools:listitem="@layout/item_movie"
         app:spanCount="2"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"/>
