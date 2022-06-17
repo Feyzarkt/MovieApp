@@ -11,12 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:layout_marginTop="0dp"
-        android:background="@color/white"
+        android:background="@android:color/darker_gray"
         android:elevation="16dp"
         app:iconifiedByDefault="false"
         app:queryBackground="@null"
-        app:queryHint="string/search"
+        app:queryHint="Search"
         app:showDividers="end"
         app:layout_constraintTop_toTopOf="parent"/>
 

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/light_purple"
+    tools:context=".ui.home.HomeFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:background="@color/light_purple"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
+            tools:title="welcome"
+            app:expandedTitleTextColor="@color/white">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivBackdrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:elevation="-10dp"
+                android:layout_gravity="center"/>
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolBar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"/>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="25dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivPoster"
+                android:layout_width="230dp"
+                android:layout_height="290dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTitReleaseDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:text="Release Date: "
+                android:textSize="18sp"
+                android:layout_marginTop="30dp"
+                app:layout_constraintTop_toBottomOf="@id/ivPoster"
+                app:layout_constraintStart_toStartOf="@id/ivPoster"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvReleaseDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                tools:text="2022-04-07"
+                android:textSize="18sp"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="10dp"
+                app:layout_constraintTop_toBottomOf="@id/ivPoster"
+                app:layout_constraintStart_toEndOf="@id/tvTitReleaseDate"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTitGenres"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Genres: "
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintTop_toBottomOf="@id/tvReleaseDate"
+                app:layout_constraintStart_toStartOf="@id/ivPoster"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvGenres"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                tools:text="Action, Romance"
+                android:textSize="18sp"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="10dp"
+                app:layout_constraintTop_toBottomOf="@id/tvReleaseDate"
+                app:layout_constraintStart_toEndOf="@id/tvTitGenres"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvVoteAverage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                tools:text="7.3"
+                android:drawableStart="@drawable/ic_vote"
+                android:drawablePadding="10dp"
+                android:background="@drawable/bg_items"
+                android:textSize="18sp"
+                android:layout_marginBottom="30dp"
+                android:layout_marginStart="15dp"
+                app:layout_constraintBottom_toTopOf="@id/tvLanguage"
+                app:layout_constraintStart_toEndOf="@id/ivPoster"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvLanguage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                tools:text="EN"
+                android:drawableStart="@drawable/ic_language"
+                android:drawablePadding="10dp"
+                android:background="@drawable/bg_items"
+                android:textSize="18sp"
+                android:layout_marginBottom="30dp"
+                android:layout_marginStart="15dp"
+                app:layout_constraintBottom_toTopOf="@id/tvPopularity"
+                app:layout_constraintStart_toEndOf="@id/ivPoster"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPopularity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                tools:text="2351.62"
+                android:drawableStart="@drawable/ic_popularity"
+                android:drawablePadding="10dp"
+                android:background="@drawable/bg_items"
+                android:textSize="18sp"
+                android:layout_marginTop="40dp"
+                android:layout_marginStart="15dp"
+                app:layout_constraintBottom_toBottomOf="@id/ivPoster"
+                app:layout_constraintStart_toEndOf="@id/ivPoster"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTitOverview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:layout_marginTop="40dp"
+                android:text="Overview"
+                app:layout_constraintTop_toBottomOf="@id/tvGenres"
+                app:layout_constraintStart_toStartOf="@id/ivPoster"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvOverview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:textSize="18sp"
+                android:text="fghjkcdvnjkmldczasdfghjklfghbjnkmlöşhjkl"
+                app:layout_constraintTop_toBottomOf="@id/tvTitOverview"
+                app:layout_constraintStart_toStartOf="@id/ivPoster"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnFav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
+        android:baselineAlignBottom="false"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_heart_inactive"
+        app:backgroundTint="@color/purple"
+        app:layout_anchor="@id/appBar"
+        app:layout_anchorGravity="end|bottom"
+        app:tint="@color/white"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
