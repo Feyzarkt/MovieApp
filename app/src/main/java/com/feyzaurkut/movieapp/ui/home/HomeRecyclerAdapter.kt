@@ -3,27 +3,31 @@ package com.feyzaurkut.movieapp.ui.home
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.feyzaurkut.movieapp.R
-import com.feyzaurkut.movieapp.data.model.Movies
+import com.feyzaurkut.movieapp.data.model.Movie
 import com.feyzaurkut.movieapp.databinding.ItemMovieBinding
 import com.feyzaurkut.movieapp.util.*
 
-class HomeRecyclerAdapter (private val movieList: ArrayList<Movies>,
+class HomeRecyclerAdapter (private val movieList: ArrayList<Movie>,
+                           private val onDoubleClickListenerAdapter: OnDoubleClickListenerAdapter,
                            private val onClickListenerAdapter: OnClickListenerAdapter)
-    : ListAdapter<Movies, HomeRecyclerAdapter.ViewHolder>(DiffCallback()){
+    : ListAdapter<Movie, HomeRecyclerAdapter.ViewHolder>(DiffCallback()){
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         private val binding = ItemMovieBinding.bind(itemView)
-        fun bind(movie: Movies){
-            println(movie)
-            movie.posterPath?.let { binding.ivPoster.getPhoto(Constants.IMAGES_URL+it) }
-            binding.tvTitle.text = movie.title
-            binding.cvMovie.setOnDoubleClickListener {
-                onClickListenerAdapter.onClick(adapterPosition)
+        fun bind(movie: Movie){
+            with(binding) {
+                movie.posterPath?.let { ivPoster.getPhoto(Constants.POSTER_URL+it) }
+                tvTitle.text = movie.title
+                cvMovie.setOnDoubleClickListener {
+                    onDoubleClickListenerAdapter.onClick(adapterPosition)
+                }
+                ivDetail.setOnClickListener {
+                    onClickListenerAdapter.onClick(adapterPosition)
+                }
             }
         }
     }
@@ -44,12 +48,12 @@ class HomeRecyclerAdapter (private val movieList: ArrayList<Movies>,
 
 }
 
-class DiffCallback : DiffUtil.ItemCallback<Movies>() {
-    override fun areItemsTheSame(oldItem: Movies, newItem: Movies): Boolean {
+class DiffCallback : DiffUtil.ItemCallback<Movie>() {
+    override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
         return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: Movies, newItem: Movies): Boolean {
+    override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean {
         return oldItem == newItem
     }
 }
