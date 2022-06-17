@@ -6,5 +6,5 @@ data class MoviesResponse(
     @SerializedName("page")
     var page: Int? = null,
     @SerializedName("results")
-    var movies: ArrayList<Movies> = arrayListOf()
+    var movies: ArrayList<Movie> = arrayListOf()
 )
