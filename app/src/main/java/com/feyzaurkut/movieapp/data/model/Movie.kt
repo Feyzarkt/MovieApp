@@ -1,8 +1,11 @@
 package com.feyzaurkut.movieapp.data.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
-data class Movies(
+@Parcelize
+data class Movie(
     @SerializedName("adult")
     var adult: Boolean? = null,
     @SerializedName("backdrop_path")
@@ -31,4 +34,4 @@ data class Movies(
     var voteAverage: Double? = null,
     @SerializedName("vote_count")
     var voteCount: Int? = null
-)
+): Parcelable
