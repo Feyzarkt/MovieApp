@@ -15,9 +15,6 @@ interface FavMovieDao {
     @Query("SELECT* FROM favMovies")
     suspend fun getFavMovies(): List<MovieInfoEntity>
 
-    /*@Query("SELECT* FROM hotspots WHERE apiKey=:apiKey AND serialNumber=:serialNum")
-    suspend fun searchHotspot(apiKey: String, serialNum: String): List<HotspotInfo>
-
-    @Query("SELECT * FROM hotspots ORDER BY id DESC LIMIT 1")
-    suspend fun getLastHotspot(): HotspotInfo*/
+    @Query("SELECT* FROM favMovies WHERE id=:id")
+    suspend fun searchFavMovie(id: Int): MovieInfoEntity?
 }

@@ -13,15 +13,5 @@ class LocalRepository @Inject constructor(private val favMovieDao: FavMovieDao) 
 
     suspend fun getFavMovies() = favMovieDao.getFavMovies()
 
-
-    /*suspend fun deleteHotspot(serialNum: String){
-        hotspotDao.deleteHotspot(serialNum)
-    }
-
-    suspend fun getHotspots() = hotspotDao.getHotspots()
-
-    suspend fun searchHotspot(apiKey: String, serialNum: String) = hotspotDao.searchHotspot(apiKey, serialNum)
-
-    suspend fun getLastHotspot() = hotspotDao.getLastHotspot()*/
-
+    suspend fun searchFavMovie(id: Int) = favMovieDao.searchFavMovie(id)
 }
