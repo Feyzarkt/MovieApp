@@ -11,12 +11,12 @@ import com.feyzaurkut.movieapp.data.model.MovieInfoEntity
 import com.feyzaurkut.movieapp.databinding.ItemFavMovieBinding
 import com.feyzaurkut.movieapp.util.Constants
 import com.feyzaurkut.movieapp.util.OnClickListenerAdapter
-import com.feyzaurkut.movieapp.util.RemoveAdapter
+import com.feyzaurkut.movieapp.util.OnClickListenerRemoveAdapter
 import com.feyzaurkut.movieapp.util.getPhoto
 
 class FavoritesRecyclerAdapter(
     private val favMovieEntityList: List<MovieInfoEntity>,
-    private val removeAdapter: RemoveAdapter,
+    private val onClickListenerRemoveAdapter: OnClickListenerRemoveAdapter,
     private val onClickListenerAdapter: OnClickListenerAdapter
 ) : ListAdapter<MovieInfoEntity, FavoritesRecyclerAdapter.ViewHolder>(DiffCallback()) {
 
@@ -27,9 +27,9 @@ class FavoritesRecyclerAdapter(
                 movieEntity.posterPath?.let { ivPoster.getPhoto(Constants.POSTER_URL + it) }
                 tvTitle.text = movieEntity.title
                 ivDelete.setOnClickListener {
-                    removeAdapter.onClick(adapterPosition)
+                    onClickListenerRemoveAdapter.onClick(adapterPosition)
                 }
-                ivDetail.setOnClickListener {
+                cvMovie.setOnClickListener {
                     onClickListenerAdapter.onClick(adapterPosition)
                 }
             }

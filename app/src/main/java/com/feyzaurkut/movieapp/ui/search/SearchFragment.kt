@@ -19,7 +19,6 @@ import com.feyzaurkut.movieapp.ui.viewmodel.LocalViewModel
 import com.feyzaurkut.movieapp.ui.viewmodel.RemoteViewModel
 import com.feyzaurkut.movieapp.util.DataMapper
 import com.feyzaurkut.movieapp.util.OnClickListenerAdapter
-import com.feyzaurkut.movieapp.util.OnDoubleClickListenerAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -66,17 +65,7 @@ class SearchFragment : Fragment() {
 
     private fun initRecycler(list: ArrayList<Movie>) {
         binding.rvSearchedMovies.apply {
-            adapter = SearchRecyclerAdapter(list, object : OnDoubleClickListenerAdapter {
-                override fun onClick(position: Int) {
-                    val favMovieInfo = DataMapper.mapMovieToMovieInfoEntities(list[position])
-                    localViewModel.insertFavMovie(favMovieInfo)
-                    Toast.makeText(
-                        requireContext(),
-                        "${favMovieInfo.title} added to favorites",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            }, object : OnClickListenerAdapter {
+            adapter = SearchRecyclerAdapter(list, object : OnClickListenerAdapter {
                 override fun onClick(position: Int) {
                     val bundle = bundleOf("movieInfo" to list[position])
                     findNavController().navigate(

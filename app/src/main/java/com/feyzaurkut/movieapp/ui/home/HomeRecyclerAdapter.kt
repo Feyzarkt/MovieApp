@@ -11,21 +11,18 @@ import com.feyzaurkut.movieapp.data.model.Movie
 import com.feyzaurkut.movieapp.databinding.ItemMovieBinding
 import com.feyzaurkut.movieapp.util.*
 
-class HomeRecyclerAdapter (private val movieList: ArrayList<Movie>,
-                           private val onDoubleClickListenerAdapter: OnDoubleClickListenerAdapter,
-                           private val onClickListenerAdapter: OnClickListenerAdapter)
-    : ListAdapter<Movie, HomeRecyclerAdapter.ViewHolder>(DiffCallback()){
+class HomeRecyclerAdapter(
+    private val movieList: ArrayList<Movie>,
+    private val onClickListenerAdapter: OnClickListenerAdapter
+) : ListAdapter<Movie, HomeRecyclerAdapter.ViewHolder>(DiffCallback()) {
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = ItemMovieBinding.bind(itemView)
-        fun bind(movie: Movie){
+        fun bind(movie: Movie) {
             with(binding) {
-                movie.posterPath?.let { ivPoster.getPhoto(Constants.POSTER_URL+it) }
+                movie.posterPath?.let { ivPoster.getPhoto(Constants.POSTER_URL + it) }
                 tvTitle.text = movie.title
-                cvMovie.setOnDoubleClickListener {
-                    onDoubleClickListenerAdapter.onClick(adapterPosition)
-                }
-                ivDetail.setOnClickListener {
+                cvMovie.setOnClickListener {
                     onClickListenerAdapter.onClick(adapterPosition)
                 }
             }
