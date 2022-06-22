@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -16,7 +17,7 @@ import com.feyzaurkut.movieapp.databinding.FragmentFavoritesBinding
 import com.feyzaurkut.movieapp.ui.viewmodel.LocalViewModel
 import com.feyzaurkut.movieapp.util.DataMapper
 import com.feyzaurkut.movieapp.util.OnClickListenerAdapter
-import com.feyzaurkut.movieapp.util.RemoveAdapter
+import com.feyzaurkut.movieapp.util.OnClickListenerRemoveAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -43,8 +44,15 @@ class FavoritesFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             localViewModel.favMoviesState.collect { requestState ->
                 when (requestState) {
+                    is RequestState.Loading -> {
+                        binding.progressBar.isVisible = true
+                    }
                     is RequestState.Success -> {
+                        binding.progressBar.isVisible = false
                         initRecycler(requestState.data)
+                    }
+                    is RequestState.Error -> {
+                        binding.progressBar.isVisible = false
                     }
                 }
             }
@@ -53,7 +61,7 @@ class FavoritesFragment : Fragment() {
 
     private fun initRecycler(list: List<MovieInfoEntity>) {
         binding.rvFavMovies.apply {
-            adapter = FavoritesRecyclerAdapter(list, object : RemoveAdapter {
+            adapter = FavoritesRecyclerAdapter(list, object : OnClickListenerRemoveAdapter {
                 override fun onClick(position: Int) {
                     list[position].id?.let { localViewModel.deleteFavMovie(it) }
                     initObserver()
