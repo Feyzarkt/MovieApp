@@ -1,5 +1,6 @@
 package com.feyzaurkut.movieapp.util
 
+
 import com.feyzaurkut.movieapp.data.model.Movie
 import com.feyzaurkut.movieapp.data.model.MovieInfoEntity
 
@@ -8,12 +9,12 @@ object DataMapper {
             return Movie(
                 adult = null,
                 backdropPath = input.backdropPath,
-                genreIds = arrayListOf(),
+                genreIds = Converters.fromString(input.genreIds),
                 id = input.id,
                 originalLanguage = input.originalLanguage,
                 originalTitle = null,
                 overview = input.overview,
-                popularity = null,
+                popularity = input.popularity,
                 posterPath = input.posterPath,
                 releaseDate = input.releaseDate,
                 title = input.title,
@@ -27,8 +28,10 @@ object DataMapper {
             return MovieInfoEntity(
                 backdropPath = input.backdropPath,
                 id = input.id,
+                genreIds = Converters.fromArrayList(input.genreIds),
                 originalLanguage = input.originalLanguage,
                 overview = input.overview,
+                popularity = input.popularity,
                 posterPath = input.posterPath,
                 releaseDate = input.releaseDate,
                 title = input.title,
