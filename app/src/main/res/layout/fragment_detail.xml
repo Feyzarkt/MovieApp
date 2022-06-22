@@ -61,106 +61,90 @@
                 app:layout_constraintStart_toStartOf="parent"/>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvTitReleaseDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:text="Release Date: "
-                android:textSize="18sp"
-                android:layout_marginTop="30dp"
-                app:layout_constraintTop_toBottomOf="@id/ivPoster"
-                app:layout_constraintStart_toStartOf="@id/ivPoster"/>
-
-            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvReleaseDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                tools:text="2022-04-07"
+                android:textColor="@android:color/darker_gray"
+                tools:text="( 2022-04-07 )"
                 android:textSize="18sp"
-                android:layout_marginTop="30dp"
                 android:layout_marginStart="10dp"
-                app:layout_constraintTop_toBottomOf="@id/ivPoster"
-                app:layout_constraintStart_toEndOf="@id/tvTitReleaseDate"/>
+                app:layout_constraintBottom_toBottomOf="@id/ivPoster"
+                app:layout_constraintStart_toEndOf="@id/ivPoster"/>
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvTitGenres"
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivTitVote"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:text="Genres: "
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_marginTop="15dp"
-                app:layout_constraintTop_toBottomOf="@id/tvReleaseDate"
+                android:src="@drawable/ic_star"
+                android:layout_marginTop="30dp"
+                app:layout_constraintTop_toBottomOf="@id/ivPoster"
                 app:layout_constraintStart_toStartOf="@id/ivPoster"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivTitGenres"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_theatre_mask"
+                android:layout_marginTop="30dp"
+                app:layout_constraintTop_toBottomOf="@id/ivPoster"
+                app:layout_constraintStart_toEndOf="@id/ivTitVote"
+                app:layout_constraintEnd_toStartOf="@id/ivTitLanguage"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvGenres"
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
+                android:gravity="center"
                 tools:text="Action, Romance"
                 android:textSize="18sp"
                 android:layout_marginTop="15dp"
                 android:layout_marginStart="10dp"
-                app:layout_constraintTop_toBottomOf="@id/tvReleaseDate"
-                app:layout_constraintStart_toEndOf="@id/tvTitGenres"/>
+                app:layout_constraintTop_toBottomOf="@id/ivTitGenres"
+                app:layout_constraintStart_toStartOf="@id/ivTitGenres"
+                app:layout_constraintEnd_toEndOf="@id/ivTitGenres"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivTitLanguage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_language"
+                android:layout_marginTop="30dp"
+                app:layout_constraintTop_toBottomOf="@id/ivPoster"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvVoteAverage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 tools:text="7.3"
-                android:drawableStart="@drawable/ic_vote"
-                android:drawablePadding="10dp"
-                android:background="@drawable/bg_items"
                 android:textSize="18sp"
-                android:layout_marginBottom="30dp"
-                android:layout_marginStart="15dp"
-                app:layout_constraintBottom_toTopOf="@id/tvLanguage"
-                app:layout_constraintStart_toEndOf="@id/ivPoster"/>
+                android:layout_marginTop="15dp"
+                app:layout_constraintTop_toBottomOf="@id/ivTitVote"
+                app:layout_constraintStart_toStartOf="@id/ivTitVote"
+                app:layout_constraintEnd_toEndOf="@id/ivTitVote"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvLanguage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 tools:text="EN"
-                android:drawableStart="@drawable/ic_language"
-                android:drawablePadding="10dp"
-                android:background="@drawable/bg_items"
                 android:textSize="18sp"
-                android:layout_marginBottom="30dp"
-                android:layout_marginStart="15dp"
-                app:layout_constraintBottom_toTopOf="@id/tvPopularity"
-                app:layout_constraintStart_toEndOf="@id/ivPoster"/>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvPopularity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                tools:text="2351.62"
-                android:drawableStart="@drawable/ic_popularity"
-                android:drawablePadding="10dp"
-                android:background="@drawable/bg_items"
-                android:textSize="18sp"
-                android:layout_marginTop="40dp"
-                android:layout_marginStart="15dp"
-                app:layout_constraintBottom_toBottomOf="@id/ivPoster"
-                app:layout_constraintStart_toEndOf="@id/ivPoster"/>
+                android:layout_marginTop="15dp"
+                app:layout_constraintTop_toBottomOf="@id/ivTitLanguage"
+                app:layout_constraintStart_toStartOf="@id/ivTitLanguage"
+                app:layout_constraintEnd_toEndOf="@id/ivTitLanguage"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvTitOverview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:textColor="@color/purple"
                 android:textStyle="bold"
-                android:textSize="24sp"
-                android:layout_marginTop="40dp"
+                android:textSize="28sp"
+                android:layout_marginTop="45dp"
                 android:text="Overview"
                 app:layout_constraintTop_toBottomOf="@id/tvGenres"
                 app:layout_constraintStart_toStartOf="@id/ivPoster"/>
