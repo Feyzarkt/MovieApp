@@ -23,26 +23,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:backgroundTint="@color/purple"
-        app:itemTextColor="@color/white"
-        app:itemIconTint="@color/white"
+        app:itemTextColor="@drawable/icon_color_selector"
+        app:itemIconTint="@drawable/icon_color_selector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav"/>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabBtnFavorites"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:src="@drawable/ic_heart"
-        android:baselineAlignBottom="false"
-        android:clickable="true"
-        android:focusable="true"
-        app:tint="@color/white"
-        app:borderWidth="0dp"
-        android:backgroundTint="@color/purple"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
-        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
