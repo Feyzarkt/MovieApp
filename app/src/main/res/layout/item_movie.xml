@@ -26,20 +26,9 @@
         android:gravity="center"
         android:textColor="@color/black"
         android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@id/ivDetail"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/ivPoster"
         app:layout_constraintTop_toBottomOf="@id/ivPoster"
         tools:text="string/string_title" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ivDetail"
-        android:layout_width="23dp"
-        android:layout_height="23dp"
-        android:src="@drawable/ic_forward"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
-        app:layout_constraintTop_toBottomOf="@id/ivPoster"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
