@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.feyzaurkut.movieapp.data.model.MovieInfoEntity
 
-@Database(entities = [MovieInfoEntity::class], version = 1)
+@Database(entities = [MovieInfoEntity::class], version = 2)
 abstract class FavMovieDatabase : RoomDatabase(){
 
     abstract fun favMovieDao(): FavMovieDao
