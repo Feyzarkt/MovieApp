@@ -8,10 +8,8 @@ import androidx.room.PrimaryKey
 data class MovieInfoEntity(
     var backdropPath: String? = null,
     var id: Int? = null,
-    var genreIds: String,
     var originalLanguage: String? = null,
     var overview: String? = null,
-    var popularity: Double? = null,
     var posterPath: String? = null,
     var releaseDate: String? = null,
     var title: String? = null,
