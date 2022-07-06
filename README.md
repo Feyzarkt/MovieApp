@@ -4,13 +4,19 @@ Movie App is an application where you can follow movie trends, search for the mo
 # Libraries Used
 
 + MVVM + Clean Architecture
-+ Retrofit
-+ Hilt
-+ Room
-+ Navigation Component
-+ ViewModel
-+ Coroutines
-+ Flow
++ [Hilt](https://developer.android.com/jetpack/compose/libraries#hilt)
++ [Room](https://developer.android.com/training/data-storage/room)
++ [Navigation Component](https://developer.android.com/guide/navigation/navigation-getting-started)
++ [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel#implement)
++ [Coroutines](https://developer.android.com/kotlin/coroutines)
++ [StateFlow, Flow, LiveData](https://developer.android.com/kotlin/flow/stateflow-and-sharedflow#livedata)
++ [Repositories](https://developer.android.com/topic/architecture#data-layer)
++ ***Third party libraries***
+  - [Retrofit](https://square.github.io/retrofit/)
+  - [OkHttp](https://square.github.io/okhttp/recipes/)
+  - [Gson](https://github.com/google/gson)
+  - [Picasso](https://square.github.io/picasso/)
+  - [Youtube player](https://github.com/PierfrancescoSoffritti/android-youtube-player)
 
 # Output
 | Splash Screen | Home Screen | Search Screen | Search Screen | Details Screen |
