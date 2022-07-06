@@ -1,6 +1,8 @@
 # MovieApp
 Movie App is an application where you can follow movie trends, search for the movie you like and add the ones you like to your favorites.
 
+***API:***  https://developers.themoviedb.org/3/getting-started/introduction
+
 # Libraries Used
 
 + MVVM + Clean Architecture
