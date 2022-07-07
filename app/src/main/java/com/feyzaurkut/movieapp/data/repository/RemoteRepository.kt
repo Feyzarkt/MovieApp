@@ -10,4 +10,6 @@ class RemoteRepository @Inject constructor( private val mainService: MainService
     suspend fun searchMovie(query: String) = mainService.searchMovie(query)
 
     suspend fun getGenres() = mainService.getGenres()
+
+    suspend fun getVideos(movieId: Int) = mainService.getVideos(movieId)
 }
