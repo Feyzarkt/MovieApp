@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_grah"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/splashFragment"
@@ -44,11 +44,6 @@
             android:id="@+id/action_favoritesFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/categoriesFragment"
-        android:name="com.feyzaurkut.movieapp.ui.categories.CategoriesFragment"
-        android:label="fragment_categories"
-        tools:layout="@layout/fragment_categories" />
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.feyzaurkut.movieapp.ui.detail.DetailFragment"
