@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/light_purple"
     tools:context=".ui.home.HomeFragment">
 
@@ -19,23 +19,23 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
+            app:expandedTitleTextColor="@color/white"
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
-            tools:title="welcome"
-            app:expandedTitleTextColor="@color/white">
+            tools:title="welcome">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivBackdrop"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop"
+                android:layout_gravity="center"
                 android:elevation="-10dp"
-                android:layout_gravity="center"/>
+                android:scaleType="centerCrop" />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolBar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"/>
+                app:layout_collapseMode="pin" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -57,108 +57,183 @@
                 android:layout_width="230dp"
                 android:layout_height="290dp"
                 android:layout_marginTop="20dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvReleaseDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@android:color/darker_gray"
-                tools:text="( 2022-04-07 )"
-                android:textSize="18sp"
                 android:layout_marginStart="10dp"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@id/ivPoster"
-                app:layout_constraintStart_toEndOf="@id/ivPoster"/>
+                app:layout_constraintStart_toEndOf="@id/ivPoster"
+                tools:text="( 2022-04-07 )" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivTitVote"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_star"
                 android:layout_marginTop="30dp"
-                app:layout_constraintTop_toBottomOf="@id/ivPoster"
-                app:layout_constraintStart_toStartOf="@id/ivPoster"/>
+                android:src="@drawable/ic_star"
+                app:layout_constraintStart_toStartOf="@id/ivPoster"
+                app:layout_constraintTop_toBottomOf="@id/ivPoster" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivTitGenres"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_theatre_mask"
                 android:layout_marginTop="30dp"
-                app:layout_constraintTop_toBottomOf="@id/ivPoster"
+                android:src="@drawable/ic_theatre_mask"
+                app:layout_constraintEnd_toStartOf="@id/ivTitLanguage"
                 app:layout_constraintStart_toEndOf="@id/ivTitVote"
-                app:layout_constraintEnd_toStartOf="@id/ivTitLanguage"/>
+                app:layout_constraintTop_toBottomOf="@id/ivPoster" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvGenres"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:gravity="center"
-                tools:text="Action, Romance"
-                android:textSize="18sp"
-                android:layout_marginTop="15dp"
                 android:layout_marginStart="10dp"
-                app:layout_constraintTop_toBottomOf="@id/ivTitGenres"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@id/ivTitGenres"
                 app:layout_constraintStart_toStartOf="@id/ivTitGenres"
-                app:layout_constraintEnd_toEndOf="@id/ivTitGenres"/>
+                app:layout_constraintTop_toBottomOf="@id/ivTitGenres"
+                tools:text="Action, Romance" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivTitLanguage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_language"
                 android:layout_marginTop="30dp"
-                app:layout_constraintTop_toBottomOf="@id/ivPoster"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                android:src="@drawable/ic_language"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ivPoster" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvVoteAverage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                tools:text="7.3"
-                android:textSize="18sp"
                 android:layout_marginTop="15dp"
-                app:layout_constraintTop_toBottomOf="@id/ivTitVote"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@id/ivTitVote"
                 app:layout_constraintStart_toStartOf="@id/ivTitVote"
-                app:layout_constraintEnd_toEndOf="@id/ivTitVote"/>
+                app:layout_constraintTop_toBottomOf="@id/ivTitVote"
+                tools:text="7.3" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvLanguage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                tools:text="EN"
-                android:textSize="18sp"
                 android:layout_marginTop="15dp"
-                app:layout_constraintTop_toBottomOf="@id/ivTitLanguage"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@id/ivTitLanguage"
                 app:layout_constraintStart_toStartOf="@id/ivTitLanguage"
-                app:layout_constraintEnd_toEndOf="@id/ivTitLanguage"/>
+                app:layout_constraintTop_toBottomOf="@id/ivTitLanguage"
+                tools:text="EN" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivLine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/line"
+                app:layout_constraintTop_toBottomOf="@id/tvGenres" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvTitOverview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/purple"
-                android:textStyle="bold"
-                android:textSize="28sp"
-                android:layout_marginTop="45dp"
+                android:layout_marginTop="24dp"
                 android:text="Overview"
-                app:layout_constraintTop_toBottomOf="@id/tvGenres"
-                app:layout_constraintStart_toStartOf="@id/ivPoster"/>
+                android:textColor="@color/purple"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/ivPoster"
+                app:layout_constraintTop_toBottomOf="@id/ivLine" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvOverview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:layout_marginTop="10dp"
-                android:textSize="18sp"
                 android:text="fghjkcdvnjkmldczasdfghjklfghbjnkmlöşhjkl"
-                app:layout_constraintTop_toBottomOf="@id/tvTitOverview"
-                app:layout_constraintStart_toStartOf="@id/ivPoster"/>
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@id/ivPoster"
+                app:layout_constraintTop_toBottomOf="@id/tvTitOverview" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivLine2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/line"
+                app:layout_constraintTop_toBottomOf="@id/tvOverview" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTitTrailer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text=" Offical Trailer"
+                android:textColor="@color/purple"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/ivPoster"
+                app:layout_constraintTop_toBottomOf="@id/ivLine2" />
+
+            <ProgressBar
+                android:id="@+id/trailerProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="20dp"
+                app:layout_constraintBottom_toBottomOf="@id/youtube_player_trailer"
+                app:layout_constraintEnd_toEndOf="@id/youtube_player_trailer"
+                app:layout_constraintStart_toStartOf="@id/youtube_player_trailer"
+                app:layout_constraintTop_toTopOf="@id/youtube_player_trailer" />
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:id="@+id/youtube_player_trailer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="@id/ivPoster"
+                app:layout_constraintTop_toBottomOf="@id/tvTitTrailer" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivLine3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/line"
+                app:layout_constraintTop_toBottomOf="@id/youtube_player_trailer" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTitVideos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Other Videos"
+                android:textColor="@color/purple"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/ivPoster"
+                app:layout_constraintTop_toBottomOf="@id/ivLine3" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvVideos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/tvTitVideos"
+                tools:listitem="@layout/item_videos" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
@@ -175,6 +250,6 @@
         app:backgroundTint="@color/purple"
         app:layout_anchor="@id/appBar"
         app:layout_anchorGravity="end|bottom"
-        app:tint="@color/white"/>
+        app:tint="@color/white" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
