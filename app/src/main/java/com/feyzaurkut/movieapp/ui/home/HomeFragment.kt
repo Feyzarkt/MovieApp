@@ -6,11 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.findNavController
 import com.feyzaurkut.movieapp.R
 import com.feyzaurkut.movieapp.data.model.Movie
@@ -29,7 +32,6 @@ class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
     private val remoteViewModel: RemoteViewModel by viewModels()
-    private val localViewModel: LocalViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,22 +44,25 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getDataFromApi()
+        onBackPressed()
     }
 
     private fun getDataFromApi() {
         remoteViewModel.getMovies()
         viewLifecycleOwner.lifecycleScope.launch {
-            remoteViewModel.moviesState.collect { requestState ->
-                when (requestState) {
-                    is RequestState.Loading -> {
-                        binding.progressBar.isVisible = true
-                    }
-                    is RequestState.Success -> {
-                        binding.progressBar.isVisible = false
-                        initRecycler(requestState.data.movies)
-                    }
-                    is RequestState.Error -> {
-                        binding.progressBar.isVisible = false
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                remoteViewModel.moviesState.collect { requestState ->
+                    when (requestState) {
+                        is RequestState.Loading -> {
+                            binding.progressBar.isVisible = true
+                        }
+                        is RequestState.Success -> {
+                            binding.progressBar.isVisible = false
+                            initRecycler(requestState.data.movies)
+                        }
+                        is RequestState.Error -> {
+                            binding.progressBar.isVisible = false
+                        }
                     }
                 }
             }
@@ -69,11 +74,20 @@ class HomeFragment : Fragment() {
             adapter = HomeRecyclerAdapter(list, object : OnClickListenerAdapter {
                 override fun onClick(position: Int) {
                     val movie = DataMapper.mapMovieToMovieInfoEntities(list[position])
-                    Log.e("click" , movie.toString())
+                    Log.e("click", movie.toString())
                     val bundle = bundleOf("movieInfo" to list[position])
                     findNavController().navigate(R.id.action_homeFragment_to_detailFragment, bundle)
                 }
             })
         }
+    }
+
+    private fun onBackPressed() {
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                activity?.finish()
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
     }
 }

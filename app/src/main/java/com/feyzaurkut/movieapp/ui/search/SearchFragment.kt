@@ -4,20 +4,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.widget.SearchView
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.findNavController
 import com.feyzaurkut.movieapp.R
 import com.feyzaurkut.movieapp.data.model.Movie
 import com.feyzaurkut.movieapp.data.model.RequestState
 import com.feyzaurkut.movieapp.databinding.FragmentSearchBinding
-import com.feyzaurkut.movieapp.ui.viewmodel.LocalViewModel
 import com.feyzaurkut.movieapp.ui.viewmodel.RemoteViewModel
-import com.feyzaurkut.movieapp.util.DataMapper
 import com.feyzaurkut.movieapp.util.OnClickListenerAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
@@ -28,14 +29,16 @@ class SearchFragment : Fragment() {
 
     private lateinit var binding: FragmentSearchBinding
     private val remoteViewModel: RemoteViewModel by viewModels()
-    private val localViewModel: LocalViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSearchBinding.inflate(inflater)
+
         initListeners()
+        onBackPressed()
+
         return binding.root
     }
 
@@ -46,10 +49,13 @@ class SearchFragment : Fragment() {
                     remoteViewModel.searchMovie(query)
                 }
                 viewLifecycleOwner.lifecycleScope.launch {
-                    remoteViewModel.searchState.collect { requestState ->
-                        when (requestState) {
-                            is RequestState.Success -> {
-                                initRecycler(requestState.data.movies)
+                    viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                        remoteViewModel.searchState.collect { requestState ->
+                            when (requestState) {
+                                is RequestState.Success -> {
+                                    initRecycler(requestState.data.movies)
+                                    binding.ivSearchIcon.isVisible = false
+                                }
                             }
                         }
                     }
@@ -77,4 +83,12 @@ class SearchFragment : Fragment() {
         }
     }
 
+    private fun onBackPressed() {
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                activity?.finish()
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+    }
 }

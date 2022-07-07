@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.findNavController
 import com.feyzaurkut.movieapp.R
 import com.feyzaurkut.movieapp.data.model.MovieInfoEntity
@@ -31,10 +34,11 @@ class FavoritesFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentFavoritesBinding.inflate(inflater)
 
         initObserver()
+        onBackPressed()
 
         return binding.root
     }
@@ -42,17 +46,22 @@ class FavoritesFragment : Fragment() {
     private fun initObserver() {
         localViewModel.getFavMovies()
         viewLifecycleOwner.lifecycleScope.launch {
-            localViewModel.favMoviesState.collect { requestState ->
-                when (requestState) {
-                    is RequestState.Loading -> {
-                        binding.progressBar.isVisible = true
-                    }
-                    is RequestState.Success -> {
-                        binding.progressBar.isVisible = false
-                        initRecycler(requestState.data)
-                    }
-                    is RequestState.Error -> {
-                        binding.progressBar.isVisible = false
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                localViewModel.favMoviesState.collect { requestState ->
+                    when (requestState) {
+                        is RequestState.Loading -> {
+                            binding.progressBar.isVisible = true
+                        }
+                        is RequestState.Success -> {
+                            binding.progressBar.isVisible = false
+                            initRecycler(requestState.data)
+                            if (requestState.data.isNullOrEmpty()) {
+                                binding.ivFavoritesIcon.isVisible = true
+                            }
+                        }
+                        is RequestState.Error -> {
+                            binding.progressBar.isVisible = false
+                        }
                     }
                 }
             }
@@ -77,5 +86,14 @@ class FavoritesFragment : Fragment() {
                 }
             })
         }
+    }
+
+    private fun onBackPressed() {
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                activity?.finish()
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
     }
 }
