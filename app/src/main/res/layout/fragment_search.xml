@@ -15,9 +15,19 @@
         android:elevation="16dp"
         app:iconifiedByDefault="false"
         app:queryBackground="@null"
-        app:queryHint="Search"
+        app:queryHint="Search movie by name.."
         app:showDividers="end"
         app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivSearchIcon"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ic_search_"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvSearchedMovies"
