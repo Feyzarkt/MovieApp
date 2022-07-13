@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
         bottomNav.setupWithNavController(navController)
 
-        setNavigation()
         setBottomNavVisibility()
     }
 
@@ -41,26 +40,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.splashFragment -> hideBottomNav()
                 R.id.detailFragment -> hideBottomNav()
                 else -> showBottomNav()
-            }
-        }
-    }
-
-    private fun setNavigation() {
-        bottomNav.setOnItemSelectedListener { item ->
-            when(item.itemId) {
-                R.id.favoritesFragment -> {
-                    navController.navigate(R.id.favoritesFragment)
-                    return@setOnItemSelectedListener true
-                }
-                R.id.homeFragment -> {
-                    navController.navigate(R.id.homeFragment)
-                    return@setOnItemSelectedListener true
-                }
-                R.id.searchFragment -> {
-                    navController.navigate(R.id.searchFragment)
-                    return@setOnItemSelectedListener true
-                }
-                else -> return@setOnItemSelectedListener false
             }
         }
     }
